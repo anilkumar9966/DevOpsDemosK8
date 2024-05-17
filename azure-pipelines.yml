@@ -7,9 +7,15 @@ trigger:
 - master
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: Windows-latest
 
 steps:
+- task: AzureCLI@2
+  inputs:
+    scriptType: 'ps'
+    scriptLocation: 'inlineScript'
+    inlineScript: 'Get-ADComputer -Identity "avdeustst1-1"'
+    
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
